@@ -1,6 +1,4 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -26,8 +24,7 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
+    <ThemeProvider>
         <TooltipProvider>
           <div className="min-h-screen bg-background text-foreground">
             <Navbar />
@@ -39,7 +36,7 @@ function App() {
           <Toaster />
         </TooltipProvider>
       </ThemeProvider>
-    </QueryClientProvider>
+    
   );
 }
 

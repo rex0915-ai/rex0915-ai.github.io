@@ -1,5 +1,4 @@
 import { useState, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,14 +6,11 @@ import { HeroSection } from "@/components/hero-section";
 import { CategoryFilter } from "@/components/category-filter";
 import { WorksGrid } from "@/components/works-grid";
 import { StatsSection } from "@/components/stats-section";
-import { type Work, type WorkCategory } from "@shared/schema";
+import { type WorkCategory } from "@/types/work";
+import { works } from "@/data/works";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<WorkCategory | "all">("all");
-
-  const { data: works = [], isLoading } = useQuery<Work[]>({
-    queryKey: ["/api/works"],
-  });
 
   const featuredWorks = useMemo(() => {
     return works.filter((work) => work.featured);
@@ -62,7 +58,7 @@ export default function Home() {
             onCategoryChange={setSelectedCategory}
           />
 
-          <WorksGrid works={filteredWorks} isLoading={isLoading} />
+          <WorksGrid works={filteredWorks} isLoading={false} />
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { type WorkCategory, categoryLabels } from "@shared/schema";
+import { type WorkCategory, categoryLabels } from "@/types/work";
 import { Camera, Video, Palette, PenTool, Box, Film, Layers } from "lucide-react";
 
 const categoryIcons: Record<WorkCategory | "all", React.ReactNode> = {

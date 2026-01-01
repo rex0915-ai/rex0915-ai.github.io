@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { Camera, Video, Palette, Mail, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { type Work } from "@shared/schema";
+import { works } from "@/data/works";
 
 export default function About() {
-  const { data: works = [] } = useQuery<Work[]>({
-    queryKey: ["/api/works"],
-  });
 
   const stats = {
     totalWorks: works.length,

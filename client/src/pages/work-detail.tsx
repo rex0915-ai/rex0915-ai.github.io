@@ -1,51 +1,27 @@
-import { useEffect } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
 import { useParams, Link } from "wouter";
 import { ArrowLeft, Calendar, Eye, Tag, Play, Share2, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WorkCard } from "@/components/work-card";
-import { type Work, categoryLabels } from "@shared/schema";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+import { type Work, categoryLabels } from "@/types/work";
+import { works } from "@/data/works";
 import { useToast } from "@/hooks/use-toast";
 
 export default function WorkDetail() {
   const params = useParams<{ id: string }>();
   const { toast } = useToast();
 
-  const { data: work, isLoading } = useQuery<Work>({
-    queryKey: ["/api/works", params.id],
-    enabled: !!params.id,
-  });
+  const work = works.find((w) => w.id === params.id);
+  const isLoading = false;
 
-  const { data: allWorks = [] } = useQuery<Work[]>({
-    queryKey: ["/api/works"],
-  });
-
-  const incrementViewMutation = useMutation({
-    mutationFn: async () => {
-      await apiRequest("POST", `/api/works/${params.id}/view`);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/works", params.id] });
-      queryClient.invalidateQueries({ queryKey: ["/api/works"] });
-    },
-  });
-
-  useEffect(() => {
-    if (params.id) {
-      incrementViewMutation.mutate();
-    }
-  }, [params.id]);
-
-  const relatedWorks = allWorks
+  const relatedWorks = works
     .filter((w) => w.category === work?.category && w.id !== work?.id)
     .slice(0, 3);
 
-  const currentIndex = allWorks.findIndex((w) => w.id === params.id);
-  const prevWork = currentIndex > 0 ? allWorks[currentIndex - 1] : null;
-  const nextWork = currentIndex < allWorks.length - 1 ? allWorks[currentIndex + 1] : null;
+  const currentIndex = works.findIndex((w) => w.id === params.id);
+  const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
+  const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
 
   const handleShare = async () => {
     if (navigator.share) {
