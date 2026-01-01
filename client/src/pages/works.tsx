@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { CategoryFilter } from "@/components/category-filter";
 import { WorksGrid } from "@/components/works-grid";
 import { type WorkCategory } from "@/types/work";
-import { works } from "@/data/works";
+import { works } from "@/data/content";
 
 export default function Works() {
   const [selectedCategory, setSelectedCategory] = useState<WorkCategory | "all">("all");
@@ -28,7 +28,7 @@ export default function Works() {
     }
 
     return result;
-  }, [works, selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen pt-20">

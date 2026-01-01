@@ -12,6 +12,8 @@ export interface Work {
   viewCount: number;
   featured: boolean;
   createdAt: string;
+  content?: string;
+  slug: string;
 }
 
 export const categoryLabels: Record<WorkCategory, string> = {

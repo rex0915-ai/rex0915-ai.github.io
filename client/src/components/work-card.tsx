@@ -9,7 +9,7 @@ interface WorkCardProps {
 
 export function WorkCard({ work }: WorkCardProps) {
   return (
-    <Link href={`/works/${work.id}`}>
+    <Link href={`/works/${work.slug}`}>
       <article
         className="group relative overflow-visible rounded-xl bg-card border border-card-border transition-all duration-300 hover:border-cyan-500/30 cursor-pointer hover-elevate"
         data-testid={`card-work-${work.id}`}

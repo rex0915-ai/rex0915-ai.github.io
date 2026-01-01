@@ -7,7 +7,7 @@ import { CategoryFilter } from "@/components/category-filter";
 import { WorksGrid } from "@/components/works-grid";
 import { StatsSection } from "@/components/stats-section";
 import { type WorkCategory } from "@/types/work";
-import { works } from "@/data/works";
+import { works } from "@/data/content";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<WorkCategory | "all">("all");

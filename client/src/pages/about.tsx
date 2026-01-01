@@ -1,7 +1,7 @@
 import { Camera, Video, Palette, Mail, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { works } from "@/data/works";
+import { works } from "@/data/content";
 
 export default function About() {
 

@@ -1,25 +1,26 @@
-import { useParams, Link } from "wouter";
+import { useRoute, Link } from "wouter";
 import { ArrowLeft, Calendar, Eye, Tag, Play, Share2, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WorkCard } from "@/components/work-card";
 import { type Work, categoryLabels } from "@/types/work";
-import { works } from "@/data/works";
+import { works } from "@/data/content";
 import { useToast } from "@/hooks/use-toast";
+import MarkdownContent from "@/components/MarkdownContent";
 
 export default function WorkDetail() {
-  const params = useParams<{ id: string }>();
+  const [, params] = useRoute("/works/:slug");
   const { toast } = useToast();
 
-  const work = works.find((w) => w.id === params.id);
+  const work = works.find((w) => w.slug === params?.slug);
   const isLoading = false;
 
   const relatedWorks = works
     .filter((w) => w.category === work?.category && w.id !== work?.id)
     .slice(0, 3);
 
-  const currentIndex = works.findIndex((w) => w.id === params.id);
+  const currentIndex = works.findIndex((w) => w.slug === params?.slug);
   const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
   const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
 
@@ -126,6 +127,12 @@ export default function WorkDetail() {
               </p>
             </div>
 
+            {work.content && (
+              <div className="border-t border-border pt-6">
+                <MarkdownContent content={work.content} />
+              </div>
+            )}
+
             <div className="flex flex-wrap gap-2">
               {work.tags.map((tag) => (
                 <Badge
@@ -155,7 +162,7 @@ export default function WorkDetail() {
 
             <div className="flex items-center justify-between pt-6 border-t border-border">
               {prevWork ? (
-                <Link href={`/works/${prevWork.id}`}>
+                <Link href={`/works/${prevWork.slug}`}>
                   <Button variant="ghost" data-testid="button-prev-work">
                     <ChevronLeft className="w-4 h-4 mr-2" />
                     上一件作品
@@ -165,7 +172,7 @@ export default function WorkDetail() {
                 <div />
               )}
               {nextWork && (
-                <Link href={`/works/${nextWork.id}`}>
+                <Link href={`/works/${nextWork.slug}`}>
                   <Button variant="ghost" data-testid="button-next-work">
                     下一件作品
                     <ChevronRight className="w-4 h-4 ml-2" />
