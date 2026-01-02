@@ -1,0 +1,42 @@
+{
+  "portfolio": [
+    {
+      "id": "1",
+      "title": "城市夜景",
+      "description": "捕捉城市夜晚的燈光與氛圍",
+      "category": "photo",
+      "mediaType": "image",
+      "mediaUrl": "/attached_assets/generated_images/City_nightscape_photography_work_a1b2c3d4.png",
+      "thumbnailUrl": "/attached_assets/generated_images/City_nightscape_photography_work_a1b2c3d4.png",
+      "tags": [
+        "夜景",
+        "城市",
+        "攝影"
+      ],
+      "viewCount": 1250,
+      "featured": true,
+      "createdAt": "2024-11-07T00:00:00Z",
+      "content": "# 城市夜景\n\n這張照片捕捉了城市夜晚的燈光與氛圍。\n\n## 拍攝技巧\n\n在拍攝城市夜景時，需要注意以下幾點：\n\n- **長時間曝光**：使用三腳架和較長的快門速度\n- **ISO 設定**：保持較低的 ISO 值以減少噪點\n- **構圖**：利用城市建築的線條和燈光創造視覺層次\n\n## 後製處理\n\n透過後製軟體調整色調和對比度，讓夜景更加生動。\n",
+      "slug": "城市夜景"
+    },
+    {
+      "id": "2",
+      "title": "自然風光",
+      "description": "記錄大自然的美麗瞬間",
+      "category": "photo",
+      "mediaType": "image",
+      "mediaUrl": "/attached_assets/generated_images/Nature_landscape_photography_work_e5f6g7h8.png",
+      "thumbnailUrl": "/attached_assets/generated_images/Nature_landscape_photography_work_e5f6g7h8.png",
+      "tags": [
+        "自然",
+        "風景",
+        "戶外"
+      ],
+      "viewCount": 980,
+      "featured": true,
+      "createdAt": "2024-11-05T00:00:00Z",
+      "content": "# 自然風光\n\n這張照片記錄了大自然的美麗瞬間。\n\n## 拍攝地點\n\n這張照片拍攝於山區，捕捉了自然環境的寧靜與美麗。\n\n## 構圖思考\n\n- 利用前景、中景、背景創造深度\n- 注意光線的方向和品質\n- 等待最佳拍攝時機\n\n## 後製心得\n\n在後製時保持自然的色調，避免過度處理。\n",
+      "slug": "自然風光"
+    }
+  ]
+}

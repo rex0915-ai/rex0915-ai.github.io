@@ -1,18 +1,14 @@
 import { useState, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { CategoryFilter } from "@/components/category-filter";
 import { WorksGrid } from "@/components/works-grid";
-import { type Work, type WorkCategory } from "@shared/schema";
+import { type WorkCategory } from "@/types/work";
+import { works } from "@/data/content";
 
 export default function Works() {
   const [selectedCategory, setSelectedCategory] = useState<WorkCategory | "all">("all");
   const [searchQuery, setSearchQuery] = useState("");
-
-  const { data: works = [], isLoading } = useQuery<Work[]>({
-    queryKey: ["/api/works"],
-  });
 
   const filteredWorks = useMemo(() => {
     let result = works;
@@ -32,7 +28,7 @@ export default function Works() {
     }
 
     return result;
-  }, [works, selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen pt-20">
@@ -71,7 +67,7 @@ export default function Works() {
               </p>
             )}
 
-            <WorksGrid works={filteredWorks} isLoading={isLoading} />
+            <WorksGrid works={filteredWorks} isLoading={false} />
           </div>
         </div>
       </section>

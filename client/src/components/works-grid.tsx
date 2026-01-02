@@ -1,4 +1,4 @@
-import { type Work } from "@shared/schema";
+import { type Work } from "@/types/work";
 import { WorkCard } from "./work-card";
 import { Skeleton } from "@/components/ui/skeleton";
 

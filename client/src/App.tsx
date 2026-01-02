@@ -1,6 +1,4 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -17,7 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/works" component={Works} />
-      <Route path="/works/:id" component={WorkDetail} />
+      <Route path="/works/:slug" component={WorkDetail} />
       <Route path="/about" component={About} />
       <Route component={NotFound} />
     </Switch>
@@ -26,20 +24,18 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <div className="min-h-screen bg-background text-foreground">
-            <Navbar />
-            <main>
-              <Router />
-            </main>
-            <Footer />
-          </div>
-          <Toaster />
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <TooltipProvider>
+        <div className="min-h-screen bg-background text-foreground">
+          <Navbar />
+          <main>
+            <Router />
+          </main>
+          <Footer />
+        </div>
+        <Toaster />
+      </TooltipProvider>
+    </ThemeProvider>
   );
 }
 
